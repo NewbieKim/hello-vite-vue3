@@ -1,0 +1,18 @@
+import { createApp } from 'vue';
+import App from './App.vue';
+import { router, setupRouter } from './router';
+import { setupStore } from './store';
+import ElementPlus from 'element-plus';
+import 'element-plus/theme-chalk/index.css';
+
+// 改造下 写法显得简便
+async function initApp() {
+  const app = createApp(App);
+  setupRouter(app); // 建立路由 添加到app
+  setupStore(app);
+  app.use(ElementPlus)
+  app.mount('#app');
+}
+initApp()
+
+// createApp(App).use(router).mount('#app')
