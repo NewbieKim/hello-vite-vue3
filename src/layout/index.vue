@@ -40,7 +40,7 @@ export default defineComponent ({
   width: 160px;
   height: 100%;
   position: fixed;
-  font-size: 0px;
+  // font-size: 0px;
   top: 0;
   bottom: 0;
   left: 0;

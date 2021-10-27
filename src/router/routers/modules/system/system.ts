@@ -7,6 +7,11 @@ const system: AppRouteModule = {
   name: 'System',
   component: Layout,
   redirect: '/system/rolesManage',
+  meta: {
+    orderNo: 1000,
+    title: '系统管理',
+    icon: 'el-icon-setting'
+  },
   children: [
     {
       path: 'rolesManage',
@@ -14,6 +19,16 @@ const system: AppRouteModule = {
       component: () => import('@/view/system/rolesManage/index.vue'),
       meta: {
         title: '角色管理',
+        keepAlive: true
+      }
+    },
+    {
+      path: 'rolesDetails/:userId',
+      name: 'RolesDetails',
+      component: () => import('@/view/system/rolesManage/details.vue'),
+      // props: { default: true },
+      meta: {
+        title: '角色详情',
         keepAlive: true
       }
     }

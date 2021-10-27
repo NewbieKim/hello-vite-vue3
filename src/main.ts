@@ -4,7 +4,9 @@ import { router, setupRouter } from './router';
 import { setupStore } from './store';
 import ElementPlus from 'element-plus';
 import 'element-plus/theme-chalk/index.css';
-
+import '@/permission';
+// base组件
+import { Base } from './utils/base';
 // 改造下 写法显得简便
 async function initApp() {
   const app = createApp(App);
@@ -12,6 +14,7 @@ async function initApp() {
   setupStore(app);
   app.use(ElementPlus)
   app.mount('#app');
+  app.config.globalProperties.Base = new Base();
 }
 initApp()
 

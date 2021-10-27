@@ -1,59 +1,113 @@
 <template>
-  <div class="sliderBar-container">
+  <div>
+    <div class="sliderBar-container">
     <div class="el-logo">
-      <!-- <img
-        src="../../../pubilc/favicon.ico"
-        style="margin-bottom: 10px;margin-top: 10px;margin-right:10px;width:30px;"
-      > -->
+      <div
+        style="margin-bottom: 10px;margin-top: 10px;margin-right:10px;width:30px;color: red"
+        @click="queryMenus"
+      >wenzi</div>
     </div>
+    <!-- 循环构建菜单 -->
     <el-scrollbar wrap-class="scrollbar-wrapper">
         <el-menu
           default-active="2"
-          :collapse="false"
+          :collapse="isCollapse"
           :unique-opened="true"
           :background-color="'#ffffff'"
         >
-          <el-menu-item index="1">
-            <i class="el-icon-location"></i>
-            <router-link to="/">
-              Navigator Index
-            </router-link>
-            <!-- <el-menu-item-group>
-              <el-menu-item index="1-1">item one</el-menu-item>
-              <el-menu-item index="1-2">item one</el-menu-item>
-            </el-menu-item-group> -->
-          </el-menu-item>
-          <el-menu-item index="2">
-            <i class="el-icon-menu"></i>
-            <router-link to="/about">
-              Navigator About
-            </router-link>
-          </el-menu-item>
-          <el-menu-item index="3">
-            <i class="el-icon-document"></i>
-            <router-link to="/login">
-              Navigator Login
-            </router-link>
-          </el-menu-item>
-          <el-menu-item index="4">
-            <i class="el-icon-setting"></i>
-            <router-link to="/system">
-              Navigator System
-            </router-link>
-          </el-menu-item>
+          <barItem
+            v-for="data in menus"
+            :key="data.url"
+            :item="data"
+            :base-path="data.url || ''"
+            :is-collapse="isCollapse"
+          />
         </el-menu>
       </el-scrollbar>
   </div>
+  </div>
 </template>
 
-<script>
-import { reactive, ref, unref, defineComponent } from 'vue'
-export default defineComponent ({
-  name: 'SliderBar',
-  setup() {
-    //
-  }
-})
+<script setup>
+  import { reactive, ref, unref, defineComponent } from 'vue'
+  import { useMenusStore } from '@/store/modules/menus'
+  import { getMenus } from '@/router/menus';
+  import barItem from './barItem.vue'
+  let isCollapse = false;
+  let menusMock = [
+        {
+          path: '/system',
+          name: 'System',
+          component: '',
+          redirect: '/system/rolesManage',
+          meta: {
+            orderNo: 10,
+            title: '系统管理',
+            icon: 'el-icon-setting'
+          },
+          children: [
+            {
+              path: 'rolesManage',
+              name: 'RolesManage',
+              component: () => import('@/view/system/rolesManage/index.vue'),
+              meta: {
+                title: '角色管理',
+                keepAlive: true
+              }
+            },
+            {
+              path: 'rolesDetails/:userId',
+              name: 'RolesDetails',
+              component: () => import('@/view/system/rolesManage/details.vue'),
+              // props: { default: true },
+              meta: {
+                title: '角色详情',
+                keepAlive: true
+              }
+            }]
+        },
+        {
+          path: '/permissions',
+          name: 'Permissions',
+          component: '',
+          redirect: '/permissions/permissionsManage',
+          meta: {
+            orderNo: 100,
+            title: '权限管理',
+            icon: 'el-icon-menu'
+          },
+          children: [
+            {
+              path: 'permissionsManage',
+              name: 'PermissionsManage',
+              component: () => import('@/view/permissionsManage/index.vue'),
+              meta: {
+                title: '权限管理',
+                keepAlive: true,
+                icon: ''
+              }
+            }
+          ]
+        }
+  ]
+  let menus = reactive(menusMock)
+  // const menusStore = useMenusStore();
+  // // console.log('menus-store', menusStore.menus);
+  // async function queryMenus () {
+  //     try {
+  //       const data = await menusStore.getMenus();
+  //       let menusMock = reactive(data.data.data);
+  //       console.log('data', data)
+  //       if (data) {
+  //         console.log('data', data)
+  //       }
+  //       debugger
+  //       return menusMock
+  //     } catch {}
+  // }
+  // let menus = setTimeout(() => {
+  //   reactive(queryMenus())
+  // }, 1000)
 </script>
 
 <style lang="scss" scoped>

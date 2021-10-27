@@ -5,7 +5,7 @@ import Layout from '@/layout/index.vue'
 
 const modules = import.meta.globEager('./modules/**/*.ts');
 
-const routeModuleList: AppRouteModule[] = [];
+export const routeModuleList: AppRouteModule[] = [];
 // 添加modules里面的路由
 Object.keys(modules).forEach((key) => {
   const mod = modules[key].default || {};

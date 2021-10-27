@@ -162,6 +162,11 @@
   resolved "https://registry.npmmirror.com/@types/node/download/@types/node-16.11.1.tgz?cache=0&sync_timestamp=1634443508532&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40types%2Fnode%2Fdownload%2F%40types%2Fnode-16.11.1.tgz#2e50a649a50fc403433a14f829eface1a3443e97"
   integrity sha1-LlCmSaUPxANDOhT4Ke+s4aNEPpc=
 
+"@types/nprogress@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.nlark.com/@types/nprogress/download/@types/nprogress-0.2.0.tgz#86c593682d4199212a0509cc3c4d562bbbd6e45f"
+  integrity sha1-hsWTaC1BmSEqBQnMPE1WK7vW5F8=
+
 "@vitejs/plugin-vue@^1.9.3":
   version "1.9.3"
   resolved "https://registry.npmmirror.com/@vitejs/plugin-vue/download/@vitejs/plugin-vue-1.9.3.tgz#93d61893ce6c723d0209af0483ec8b91a2cd811f"
@@ -1392,6 +1397,11 @@ minimatch@^3.0.4:
   dependencies:
     brace-expansion "^1.1.7"
 
+mitt@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.nlark.com/mitt/download/mitt-3.0.0.tgz?cache=0&sync_timestamp=1624483449786&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fmitt%2Fdownload%2Fmitt-3.0.0.tgz#69ef9bd5c80ff6f57473e8d89326d01c414be0bd"
+  integrity sha1-ae+b1cgP9vV0c+jYkybQHEFL4L0=
+
 ms@2.1.2:
   version "2.1.2"
   resolved "https://registry.npmmirror.com/ms/download/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
@@ -1430,6 +1440,11 @@ normalize-wheel-es@^1.1.0:
   version "1.1.0"
   resolved "https://registry.npmmirror.com/normalize-wheel-es/download/normalize-wheel-es-1.1.0.tgz#db017af1dd5d4c6222c07ae38bc224049d25861e"
   integrity sha1-2wF68d1dTGIiwHrji8IkBJ0lhh4=
+
+nprogress@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.nlark.com/nprogress/download/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
+  integrity sha1-y480xTIT2JVyP8urkH6UIq28r7E=
 
 object-assign@^4.1.1:
   version "4.1.1"
@@ -1841,6 +1856,11 @@ token-stream@1.0.0:
   version "1.0.0"
   resolved "https://registry.npm.taobao.org/token-stream/download/token-stream-1.0.0.tgz#cc200eab2613f4166d27ff9afc7ca56d49df6eb4"
   integrity sha1-zCAOqyYT9BZtJ/+a/HylbUnfbrQ=
+
+ts-md5@^1.2.9:
+  version "1.2.9"
+  resolved "https://registry.nlark.com/ts-md5/download/ts-md5-1.2.9.tgz?cache=0&sync_timestamp=1624340827199&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fts-md5%2Fdownload%2Fts-md5-1.2.9.tgz#22c9fd2baafdfdebee1068ff4d2dc215ff51df77"
+  integrity sha1-Isn9K6r9/evuEGj/TS3CFf9R33c=
 
 tslib@^2.3.0:
   version "2.3.1"
