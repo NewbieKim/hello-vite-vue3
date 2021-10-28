@@ -22,6 +22,29 @@ const permissions: AppRouteModule = {
         keepAlive: true,
         icon: ''
       }
+    },
+    {
+      path: 'front',
+      name: 'Front',
+      component: Layout,
+      redirect: '/permissions/front/btnPermission',
+      meta: {
+        title: '前端权限',
+        keepAlive: true,
+        icon: ''
+      },
+      children: [
+        {
+          path: 'btnPermission',
+          name: 'btnPermission',
+          component: () => import('@/view/permissionsManage/front/btn.vue'),
+          meta: {
+            title: '按钮权限',
+            keepAlive: true,
+            icon: ''
+          }
+        }
+      ]
     }
   ]
 }

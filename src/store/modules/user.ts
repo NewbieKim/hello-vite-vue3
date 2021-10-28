@@ -5,12 +5,13 @@ import { LoginRoute } from '../../router/routers';
 import axios from 'axios';
 import { userApi } from '../../api/user'
 import { Md5 } from 'ts-md5';
-
+import { RoleEnum } from '../../enums/roleEnum';
 // 
 interface UserState {
   userInfo: string;
   userId: string,
   token?: string;
+  roleList: RoleEnum[]
 }
 
 export const useUserStore = defineStore({
@@ -18,10 +19,19 @@ export const useUserStore = defineStore({
   state: (): UserState => ({
     userInfo: 'kkk',
     userId: '123',
-    token: '123kkk20211102232333'
+    token: '123kkk20211102232333',
+    roleList: []
   }),
-  getters: {},
+  getters: {
+    getRoleList(): RoleEnum[] {
+      return this.roleList.length > 0 ? this.roleList : [];
+    }
+  },
   actions: {
+    setRoleList(roleList: RoleEnum[]) {
+      this.roleList = roleList;
+      // setAuthCache(ROLES_KEY, roleList);
+    },
     async Login(userInfo: {email: string, password: string}) {
       // let pwd = Md5.hashStr(Md5.hashStr(userInfo.password) + '12345678');
       // let pd = Md5.

@@ -22,6 +22,16 @@ const learn: AppRouteModule = {
         keepAlive: true,
         icon: ''
       }
+    },
+    {
+      path: 'list',
+      name: 'List',
+      component: () => import('@/view/learn/list/index.vue'),
+      meta: {
+        title: '列表组件',
+        keepAlive: true,
+        icon: ''
+      }
     }
   ]
 }

@@ -15,8 +15,8 @@
   </div>
 </template>
 
-<script setup>
-  import { ref, reactivem, provide } from 'vue';
+<script lang="ts" setup>
+  import { ref, reactive, provide } from 'vue';
   import child from './child/index.vue';
   import slotComp from './child/slot.vue';
   import { useMenusStoreWithOut } from '@/store/modules/menus'
