@@ -200,7 +200,7 @@ module.exports = {
   'extends': [
     'eslint:recommended',
     'plugin:vue/recommended',
-    '@vue/standard',
-    '@vue/typescript'
+    // '@vue/standard',
+    // '@vue/typescript'
   ]
 }

@@ -27,7 +27,8 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref } from 'vue';
+  // import { defineComponent } from 'vue';
+  import { ref, defineComponent } from 'vue';
   import { RoleEnum  } from '../../../enums/roleEnum';
   import { usePermission } from '../../../hooks/web/usePermission';
   const { hasPermission } = usePermission();

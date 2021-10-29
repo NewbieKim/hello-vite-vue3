@@ -43,7 +43,24 @@ export const useUserStore = defineStore({
       const data: any = await axios.post(userApi.login, params)
       // 存储用户信息
       if (data.data.code === 1) {
-        sessionStorage.setItem('userInfo', JSON.stringify(data.data.data));
+        // 获取角色
+        let userInfo = data.data.data
+        this.GetRoleList({userId: userInfo.user_id})
+        sessionStorage.setItem('userInfo', JSON.stringify(userInfo));
+      } else {
+        // this.$base.win.msg('登录失败', 'error');
+      }
+      return data
+    },
+    async GetRoleList(userInfo: { userId: string }) {
+      const params = {
+        userId: userInfo.userId,
+      }
+      // 调用接口
+      const data: any = await axios.post(userApi.getRoleList, params)
+      // 存储用户信息
+      if (data.data.code === 1) {
+        // sessionStorage.setItem('userInfo', JSON.stringify(data.data.data));
       } else {
         // this.$base.win.msg('登录失败', 'error');
       }

@@ -18,9 +18,9 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
   import { ref, reactive, computed } from 'vue'
-  let title = ref('');
+  let title: any = ref('');
   let doneNum = ref(0);
   const todos = reactive([
     {
@@ -38,22 +38,22 @@
   }
   // 完成度：{{ todos.filter((v) => { return v.isDone === true }).length }} / {{ todos.length }}
   // 方法赋值
-  function handleCheck(value) {
+  function handleCheck(value: any) {
     console.log(todos.filter(v => { v.isDone === true }));
     doneNum.value = (todos.filter(v => { console.log(v.isDone); return v.isDone === true }).length);
   }
   // 计算属性
-  const finish = computed(() => {
+  const finish: any = computed(() => {
     return todos.filter(v =>  v.isDone === true ).length
   })
-  const all = computed(() => {
+  const all: any = computed(() => {
     return todos.length;
   })
-  const allDone = computed({
+  const allDone: any = computed({
     get: function() {
       return finish === todos.length;
     },
-    set: function (val) {
+    set: function (val: any) {
       todos.forEach(item => {
         console.log('set', val);
         item.isDone = val;
