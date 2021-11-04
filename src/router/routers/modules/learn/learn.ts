@@ -32,6 +32,14 @@ const learn: AppRouteModule = {
         keepAlive: true,
         icon: ''
       }
+    },
+    {
+      path: 'reactive',
+      name: 'Reactive',
+      component: () => import('@/view/learn/reactive/index.vue'),
+      meta: {
+        title: '响应式'
+      }
     }
   ]
 }

@@ -3,6 +3,7 @@
   author：kim-jiang
 */
 import axios from 'axios'
+import { useUserStore } from '@/store/modules/user';
 // 创建一个axios的实例
 const service = axios.create({
   baseURL: 'http://localhost:3000/',
@@ -14,10 +15,10 @@ const LOCALURL = 'http://localhost:3000/'
 
 // 添加请求的拦截器
 service.interceptors.request.use((config: any) => {
+  let useStore = useUserStore()
   // 发送请求前的处理
   // 设置token
-  debugger
-  config.headers['X-Token'] = ''
+  config.headers['X-Token'] = useStore.token;
   config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
   return config
 }, (error:any) => {

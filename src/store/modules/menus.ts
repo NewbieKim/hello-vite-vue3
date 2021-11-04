@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia'
-import { store } from '..'
+import { store } from '../../store'
 import { LoginRoute } from '../../router/routers';
 // import { menu } from '../../router/menu';
 import axios from 'axios';
-import { menusApi } from '../../api/menus'
+import { menusApi, getMenusList } from '../../api/menus'
 
 // 
 interface MenusState {
@@ -31,8 +31,9 @@ export const useMenusStore = defineStore({
         userName: 'chsp'
       }
       // 调用接口
-      const data: any = await axios.post(menusApi.getMenus, params)
-      // this.state.menus = data.data.data;
+      // const data: any = await axios.post(menusApi.getMenus, params)
+      const data: any = await getMenusList(params)
+      // // this.state.menus = data.data.data;
       return data
     }
   }

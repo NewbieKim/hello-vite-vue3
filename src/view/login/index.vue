@@ -59,7 +59,7 @@
     formRef.value.validate(async(valid: boolean) => {
       if (valid) {
         await userStore.Login(params).then((res: any) => {
-          let data = res.data
+          let data = res
           if (data.code === 1) {
             // 登录成功
             console.log('登录成功')

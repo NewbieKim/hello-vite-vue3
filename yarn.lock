@@ -157,11 +157,6 @@
   resolved "https://registry.npmmirror.com/@popperjs/core/download/@popperjs/core-2.10.2.tgz?cache=0&sync_timestamp=1633001189151&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40popperjs%2Fcore%2Fdownload%2F%40popperjs%2Fcore-2.10.2.tgz#0798c03351f0dea1a5a4cabddf26a55a7cbee590"
   integrity sha1-B5jAM1Hw3qGlpMq93yalWny+5ZA=
 
-"@types/node@^16.11.1":
-  version "16.11.1"
-  resolved "https://registry.npmmirror.com/@types/node/download/@types/node-16.11.1.tgz?cache=0&sync_timestamp=1634443508532&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40types%2Fnode%2Fdownload%2F%40types%2Fnode-16.11.1.tgz#2e50a649a50fc403433a14f829eface1a3443e97"
-  integrity sha1-LlCmSaUPxANDOhT4Ke+s4aNEPpc=
-
 "@types/nprogress@^0.2.0":
   version "0.2.0"
   resolved "https://registry.nlark.com/@types/nprogress/download/@types/nprogress-0.2.0.tgz#86c593682d4199212a0509cc3c4d562bbbd6e45f"
@@ -337,6 +332,14 @@
   resolved "https://registry.npmmirror.com/@vue/shared/download/@vue/shared-3.2.20.tgz?cache=0&sync_timestamp=1633712700180&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40vue%2Fshared%2Fdownload%2F%40vue%2Fshared-3.2.20.tgz#53746961f731a8ea666e3316271e944238dc31db"
   integrity sha1-U3RpYfcxqOpmbjMWJx6UQjjcMds=
 
+"@vueuse/core@^6.7.4":
+  version "6.7.4"
+  resolved "https://registry.npmmirror.com/@vueuse/core/download/@vueuse/core-6.7.4.tgz#8e15524454388b11c9eb6ff59a6742602b976e2f"
+  integrity sha1-jhVSRFQ4ixHJ62/1mmdCYCuXbi8=
+  dependencies:
+    "@vueuse/shared" "6.7.4"
+    vue-demi "*"
+
 "@vueuse/core@~6.1.0":
   version "6.1.0"
   resolved "https://registry.npmmirror.com/@vueuse/core/download/@vueuse/core-6.1.0.tgz#8137c291cf49b11c2deda4d5079096e55b36fc28"
@@ -349,6 +352,13 @@
   version "6.1.0"
   resolved "https://registry.npmmirror.com/@vueuse/shared/download/@vueuse/shared-6.1.0.tgz#1375fd41acefe52f9a1842f3c6a8a348786535ba"
   integrity sha1-E3X9Qazv5S+aGELzxqijSHhlNbo=
+  dependencies:
+    vue-demi "*"
+
+"@vueuse/shared@6.7.4":
+  version "6.7.4"
+  resolved "https://registry.npmmirror.com/@vueuse/shared/download/@vueuse/shared-6.7.4.tgz?cache=0&sync_timestamp=1635386600577&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40vueuse%2Fshared%2Fdownload%2F%40vueuse%2Fshared-6.7.4.tgz#9aa2967d20863cf3253afd08a2e6e84a61d2c89b"
+  integrity sha1-mqKWfSCGPPMlOv0IouboSmHSyJs=
   dependencies:
     vue-demi "*"
 
@@ -1317,6 +1327,11 @@ isexe@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npm.taobao.org/isexe/download/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
+
+js-cookie@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.nlark.com/js-cookie/download/js-cookie-3.0.1.tgz?cache=0&sync_timestamp=1630493056723&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fjs-cookie%2Fdownload%2Fjs-cookie-3.0.1.tgz#9e39b4c6c2f56563708d7d31f6f5f21873a92414"
+  integrity sha1-njm0xsL1ZWNwjX0x9vXyGHOpJBQ=
 
 js-stringify@^1.0.2:
   version "1.0.2"

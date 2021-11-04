@@ -4,8 +4,8 @@
     <div class="el-logo">
       <div
         style="margin-bottom: 10px;margin-top: 10px;margin-right:10px;width:30px;color: red"
-        @click="queryMenus"
-      >wenzi</div>
+        @click="loginOut"
+      >退登</div>
     </div>
     <!-- 循环构建菜单 -->
     <el-scrollbar wrap-class="scrollbar-wrapper">
@@ -28,11 +28,12 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
   import { reactive, ref, unref, defineComponent } from 'vue'
   import { useMenusStore } from '@/store/modules/menus'
   import { getMenus } from '@/router/menus';
   import barItem from './barItem.vue'
+  import { useUserStore } from '@/store/modules/user';
   let isCollapse = false;
   let menusMock = [
         {
@@ -91,6 +92,11 @@
         }
   ]
   let menus = reactive(menusMock)
+  let useStore = useUserStore();
+  async function loginOut () {
+    await useStore.LoginOut()
+    return
+  }
   // const menusStore = useMenusStore();
   // // console.log('menus-store', menusStore.menus);
   // async function queryMenus () {

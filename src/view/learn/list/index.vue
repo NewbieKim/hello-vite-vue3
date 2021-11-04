@@ -19,19 +19,25 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref, reactive, computed } from 'vue'
+  import { ref, reactive, computed, watchEffect } from 'vue'
+  import useStorage from '@/hooks/learn/useStorage'
   let title: any = ref('');
   let doneNum = ref(0);
-  const todos = reactive([
-    {
-      title: '排舞',
-      isDone: false
-    },
-    {
-      title: '知识星球',
-      isDone: false
-    }
-  ]);
+  // const todos = reactive([
+  //   {
+  //     title: '排舞',
+  //     isDone: false
+  //   },
+  //   {
+  //     title: '知识星球',
+  //     isDone: false
+  //   }
+  // ]);
+  // 实现土豆丝的前端持久化
+  // let todos = reactive(JSON.parse(localStorage.getItem('todos')) || []);
+  // watchEffect(()=>{ localStorage.setItem('todos', JSON.stringify(todos))})
+  // 函数封装
+  let todos = useStorage('todos',[])
   const addList = () => {
     todos.push({ title: title.value, isDone: false});
     title.value = '';
@@ -44,14 +50,20 @@
   }
   // 计算属性
   const finish: any = computed(() => {
-    return todos.filter(v =>  v.isDone === true ).length
+    let length = todos.filter(v =>  v.isDone === true ).length
+    if (length === todos.length) {
+      allDone.get;
+    }
+    // console.log(length, todos.length);
+    return length;
   })
   const all: any = computed(() => {
     return todos.length;
   })
-  const allDone: any = computed({
+  let allDone: any = computed({
     get: function() {
-      return finish === todos.length;
+      // 响应式的变量值需要通过value获取
+      return finish.value === todos.length;
     },
     set: function (val: any) {
       todos.forEach(item => {

@@ -5,6 +5,7 @@ import NProgress from 'nprogress';
 import { router } from '@/router/index';
 import { Router } from 'vue-router';
 import { Base } from './utils/base';
+import { useUserStore } from '@/store/modules/user';
 NProgress.configure({ showSpinner: false });
 const whiteList = ['/login'];
 const title = 'my first vite project';
@@ -26,6 +27,7 @@ router.beforeEach(async(to: Router, _: Router, next: any) => {
   }
   NProgress.start();
   let userInfo = sessionStorage.getItem('userInfo');
+  let useStore = useUserStore()
   if (userInfo) {
     // @ts-ignore
     if (to.path === '/login') {
