@@ -17,7 +17,8 @@ axios.interceptors.request.use(
   config => {
     let useStore = useUserStore()
     if (useStore.token) {
-      axios.defaults.headers.post['Authorization'] = useStore.token
+      debugger
+      axios.defaults.headers.post['Authorization'] = `Bearer ` + useStore.token
       // token && (config.headers.Authorization  = token)
     }
     return config

@@ -12,7 +12,11 @@
   async function queryMenus () {
     const menusStore = useMenusStore()
     try {
-      const data = await menusStore.getMenus();
+      const data = await menusStore.getMenus().then((res: any) => {
+        console.log('内部res', res)
+      }).catch((error: any) => {
+        console.log('内部error', error)
+      })
       console.log('mm', data)
     } catch(error) {
       console.log('查询菜单失败', error)
