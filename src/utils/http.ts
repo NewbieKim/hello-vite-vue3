@@ -17,7 +17,6 @@ axios.interceptors.request.use(
   config => {
     let useStore = useUserStore()
     if (useStore.token) {
-      debugger
       axios.defaults.headers.post['Authorization'] = `Bearer ` + useStore.token
       // token && (config.headers.Authorization  = token)
     }
@@ -34,6 +33,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 
 // 响应拦截器
 axios.interceptors.response.use(response => {
+  console.log('response', response)
   if(response.status === 200) {
     if (response.data.code === 510) {}
     else {
@@ -41,6 +41,7 @@ axios.interceptors.response.use(response => {
     }
   }
   error => {
+    debugger
     if (error && error.response) {
       switch (error.response.status) {
       case 400:

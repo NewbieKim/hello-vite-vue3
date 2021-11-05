@@ -40,6 +40,22 @@ const learn: AppRouteModule = {
       meta: {
         title: '响应式'
       }
+    },
+    {
+      path: 'rate',
+      name: 'Rate',
+      component: () => import('@/view/learn/rate/index.vue'),
+      meta: {
+        title: '评级组件'
+      }
+    },
+    {
+      path: 'animation',
+      name: 'Animation',
+      component: () => import('@/view/learn/animation/index.vue'),
+      meta: {
+        title: '评级组件'
+      }
     }
   ]
 }
