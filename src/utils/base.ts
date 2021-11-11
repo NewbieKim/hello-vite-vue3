@@ -12,6 +12,10 @@ interface Win {
   msg(message: string, type ?: any): void
 }
 
+interface Util {
+  shallowCopy(src: Array<any>): any
+}
+
 export class Base {
   win: Win = {
     msg(message:string, type:any) {
@@ -19,6 +23,17 @@ export class Base {
         message: message,
         type: type || 'warning'
       })
+    }
+  };
+  util: Util = {
+    shallowCopy(src: Array<any>): any {
+      let res: any = []
+      for (let prop in src) {
+        if (src.hasOwnProperty(prop)) {
+          res[prop] = src[prop]
+        }
+      }
+      return res
     }
   }
 }

@@ -7,6 +7,10 @@ import 'element-plus/theme-chalk/index.css';
 import '@/permission';
 // base组件
 import { Base } from './utils/base';
+// 样式文件
+import "@/style/base.scss";
+
+
 // 改造下 写法显得简便
 async function initApp() {
   const app = createApp(App);

@@ -54,7 +54,23 @@ const learn: AppRouteModule = {
       name: 'Animation',
       component: () => import('@/view/learn/animation/index.vue'),
       meta: {
-        title: '评级组件'
+        title: '动画组件'
+      }
+    },
+    {
+      path: 'viewPort',
+      name: 'ViewPort',
+      component: () => import('@/view/learn/viewPort/index.vue'),
+      meta: {
+        title: '视口位置'
+      }
+    },
+    {
+      path: 'slot',
+      name: 'Slot',
+      component: () => import('@/view/learn/slot/index.vue'),
+      meta: {
+        title: 'vue插槽'
       }
     }
   ]

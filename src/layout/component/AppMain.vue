@@ -18,7 +18,7 @@
   </RouterView>
 </template>
 
-<script>
+<script lang="ts">
 import { useRoute } from 'vue-router'
 import { computed, toRaw, unref } from 'vue';
 export default {

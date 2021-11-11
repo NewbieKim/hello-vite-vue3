@@ -7,7 +7,7 @@ import { useRouter } from 'vue-router';
 export type RouteLocationRawEx = Omit<RouteLocationRaw, 'path'> & { path: PageEnum };
 
 function handleError(e: Error) {
-  console.error(e);
+  // console.error(e);
 }
 
 // page switch

@@ -22,7 +22,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { useUserStoreWithOut } from '@/store/modules/user'
 import { reactive, ref, unref, toRefs, isRef } from 'vue'
 import { useRouter } from 'vue-router';

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <span class="dustbin">🗑</span>
     <div class="container">
       <el-input v-model="title" @keydown.enter="addList" />
       <div class="list-container">
@@ -8,6 +9,7 @@
             <li v-for="(item, index) in todos" :key="index">
               <input type="checkbox" v-model="item.isDone">
               <span>{{ item.title }}</span>
+              <span @click="removeItem($event, index)">❌</span>
             </li>
           </transition-group>
         </ul>
@@ -22,6 +24,11 @@
         <div class="info">      哥，你啥也没输</div>
       </div>
     </transition>
+    <div class="animate-wrap">
+      <transition @before-enter="beforeEnterAnimation" @enter="enterAnimation" @after-enter="afterEnterAnimation">
+        <div class="animate" v-show="animate.show">📋</div>
+      </transition>
+    </div>
   </div>
 </template>
 
@@ -33,6 +40,11 @@
   let doneNum = ref(0);
   // 弹框显示字段
   let show = ref(false)
+  // 动画
+  let animate = reactive({
+    show: false,
+    el: null
+  })
   // const todos = reactive([
   //   {
   //     title: '排舞',
@@ -91,23 +103,65 @@
       });
     }
   })
+
+  // remove动画效果
+  const removeItem = (e: any, i: number) => {
+    animate.el = e.target;
+    animate.show = true;
+    todos.splice(i , 1)
+  }
+  // 类似垃圾箱拖拽动画实现
+  const beforeEnterAnimation = (el: any) => {
+    let dom: any = animate.el;
+    console.log('dom', dom, el);
+    // 获取浏览器鼠标位置
+    let rect = dom.getBoundingClientRect()
+    console.log('rect', rect, window.innerWidth)
+    let x = window.innerWidth - rect.left - 60;
+    let y = rect.top - 100;
+    // let x = 1000;
+    // let y = 100;
+    console.log('x y', x, y);
+    el.style.transform = `translate(-${x}px,-${y}px)`
+  }
+  const enterAnimation = (el: any, done: any) => {
+    document.body.offsetHeight;
+    el.style.transform = `translate(0,0)`;
+    el.addEventListener('transitionend', done)
+  }
+  const afterEnterAnimation = (el: any) => {
+    animate.show = false;
+    el.style.display = 'none';
+  }
 </script>
 
 <style lang="scss" scoped>
+.dustbin {
+  left: 200px;
+  position: relative;
+  top: 30px;
+}
+.animate-wrap .animate {
+  position: relative;
+  right: 10px;
+  top: 10px;
+  z-index: 100;
+  transition: all 1s linear;
+}
 .container {
   margin: 0 auto;
   width: 20%;
 }
 .modal-enter-from {
   opacity: 0;
-  transform: translateY(-60px);
+  transform: translateY(30px);
 }
 .modal-enter-active {
   transition: all 0.3s ease;
 }
 .modal-leave-to {
   opacity: 0;
-  transform: translateY(-60px);
+  transform: translateY(30px);
 }
 .modal-leave-active {
   transition: all 0.3s ease;
@@ -119,6 +173,6 @@
   transition: all 1s ease;
 }
 .list-enter-from, .list-leave-to {
-  transform: translateX(-60px);
+  transform: translateX(30px);
 }
 </style>

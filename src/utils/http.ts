@@ -33,7 +33,6 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 
 // 响应拦截器
 axios.interceptors.response.use(response => {
-  console.log('response', response)
   if(response.status === 200) {
     if (response.data.code === 510) {}
     else {

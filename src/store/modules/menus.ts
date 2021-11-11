@@ -4,8 +4,8 @@ import { LoginRoute } from '../../router/routers';
 // import { menu } from '../../router/menu';
 import axios from 'axios';
 import { menusApi, getMenusList } from '../../api/menus'
-
-// 
+import { basicRoutes, routeModuleList } from '@/router/routers';
+import { Base } from "@/utils/base";
 interface MenusState {
   userInfo: string;
   userId: string,
@@ -25,7 +25,17 @@ export const useMenusStore = defineStore({
 
   },
   actions: {
+    getMenus1() {
+      const base = new Base()
+      // let routesData = base.util.shallowCopy(routeModuleList);
+      let routesData = JSON.parse(JSON.stringify(routeModuleList))
+      // routesData = routesData.filter((item: any) => {
+      //   return !item.path.includes(':/')
+      // })
+      return routesData;
+    },
     async getMenus() {
+      console.log('local menu', routeModuleList)
       const params = {
         userId: '2021102601',
         userName: 'chsp'

@@ -13,7 +13,6 @@ const staticMenus: Menu[] = [];
     const mod = modules[key].default || {};
     const modList = Array.isArray(mod) ? [...mod] : [mod];
     menuModules.push(...modList);
-    console.log('menuModules', menuModules);
   });
   menuModules.sort((a, b) => {
     return (a.orderNo || 0) - (b.orderNo || 0)
@@ -37,7 +36,6 @@ async function getAsyncMenus() {
 
 export const getMenus = async (): Promise<Menu[]> => {
   const menus = await getAsyncMenus();
-  console.log('menus', menus);
   // if (isRoleMode()) {
   //   const routes = router.getRoutes();
   //   return filter(menus, basicFilter(routes));

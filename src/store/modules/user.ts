@@ -54,7 +54,6 @@ export const useUserStore = defineStore({
       }
       // 调用接口
       // const data: any = await axios.post(userApi.login, params)
-      console.log('lo',await login(params))
       const data:any = await login(params)
       // 存储用户信息
       if (data.code === 1) {

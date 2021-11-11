@@ -8,7 +8,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { useGo, useRedo } from '@/hooks/web/usePage';
 import { computed, defineComponent, unref } from 'vue';
 import { PageEnum } from '@/enums/pageEnum';
@@ -30,7 +30,6 @@ export default defineComponent({
       // router.go(-1)
     }
     function reDo() {
-      console.log('reDo')
       redo();
     }
     return {

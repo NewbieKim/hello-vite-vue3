@@ -28,8 +28,6 @@ service.interceptors.request.use((config: any) => {
 // 添加响应拦截器
 service.interceptors.response.use((response:any) => {
   if (response.state !== 200 ) {
-    console.log(response)
-    debugger
     return Promise.reject(response.message || 'error')
   }
   return response

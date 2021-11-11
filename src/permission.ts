@@ -20,7 +20,6 @@ let routerCache: Array<any> = [];
 */
 router.beforeEach(async(to: Router, _: Router, next: any) => {
   const base = new Base();
-  console.log('route', to, _);
   // @ts-ignore
   if (to.name) {
     // 缓存路由
@@ -54,7 +53,6 @@ router.beforeEach(async(to: Router, _: Router, next: any) => {
 
 router.afterEach((to: Router) => {
   // Finish progress bar
-  console.log(' router done', to);
   NProgress.done();
 
   // set page title

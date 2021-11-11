@@ -17,3 +17,7 @@ export const setRoleId = (roleId: string) => Cookies.set(roleIdKey, roleId)
 export const removeToken = () => Cookies.remove(tokenKey)
 export const removeUserId = () => Cookies.remove(userIdKey)
 export const removeRoleId = () => Cookies.remove(roleIdKey)
+
+// app
+export const setSliderBarStatus = (sliderBarStatus: string) => Cookies.set('sliderBar_status', sliderBarStatus)
+export const getSliderBarStatus = () => Cookies.get('sliderBar_status')
