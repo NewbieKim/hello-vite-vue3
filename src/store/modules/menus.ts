@@ -6,7 +6,7 @@ import axios from 'axios';
 import { menusApi, getMenusList } from '../../api/menus'
 import { basicRoutes, routeModuleList } from '@/router/routers';
 import { Base } from "@/utils/base";
-interface MenusState {
+interface IMenusState {
   userInfo: string;
   userId: string,
   token?: string;
@@ -14,7 +14,7 @@ interface MenusState {
 
 export const useMenusStore = defineStore({
   id: 'app-menus',
-  state: (): MenusState => ({
+  state: (): IMenusState => ({
     userInfo: 'kkk',
     userId: '123',
     token: '123kkk20211102232333'

@@ -9,7 +9,7 @@ import { RoleEnum } from '../../enums/roleEnum';
 import { router } from '@/router';
 // 引入cookies
 import { getToken, getUserId, getRoleId, setToken, setUserId, setRoleId, removeToken, removeUserId, removeRoleId } from '@/utils/cookies'
-interface UserState {
+interface IUserState {
   userInfo: string,
   userId: string,
   token: string,
@@ -19,7 +19,7 @@ interface UserState {
 
 export const useUserStore = defineStore({
   id: 'app-user',
-  state: (): UserState => ({
+  state: (): IUserState => ({
     userInfo: 'kkk',
     userId: getUserId() || '',
     token: getToken() || '',
