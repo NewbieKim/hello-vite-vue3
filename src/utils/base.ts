@@ -26,14 +26,25 @@ export class Base {
     }
   };
   util: Util = {
-    shallowCopy(src: Array<any>): any {
-      let res: any = []
-      for (let prop in src) {
-        if (src.hasOwnProperty(prop)) {
-          res[prop] = src[prop]
+    shallowCopy: (obj: any) => {
+      if (typeof obj !== 'object') return
+      let newObj: any = obj instanceof Array ? [] : {}
+      for (let key in obj) {
+        if (obj.hasOwnProperty(key)) {
+          newObj[key] = obj[key];
         }
       }
-      return res
+      return newObj
+    },
+    deepCopy: (obj: any) => {
+      if (typeof obj !== 'object') return
+      let newObj: any = obj instanceof Array ? [] : {}
+      for (let key in obj) {
+        if (obj.hasOwnProperty(key)) {
+          newObj[key] = typeof obj[key] === 'object' ? deepCopy(obj[key]) : obj[key];
+        }
+      }
+      return newObj
     }
   }
 }

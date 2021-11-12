@@ -40,7 +40,6 @@ axios.interceptors.response.use(response => {
     }
   }
   error => {
-    debugger
     if (error && error.response) {
       switch (error.response.status) {
       case 400:

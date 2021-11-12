@@ -1,17 +1,20 @@
 <template>
   <div>
-    <router-view />
+    <router-view v-if="showPage" />
   </div>
 </template>
 
-<script>
-import { useRoute } from 'vue-router'
-export default {
-  setup() {
-    const router = useRoute();
-    const key = router.path;
-  }
-}
+<script lang="ts" setup>
+  import { ref, provide, nextTick } from "vue";
+  import { useRoute } from 'vue-router'
+  const showPage = ref<boolean>(true)
+  const onRefresh = () => {
+      showPage.value = false
+      nextTick(() => {
+        showPage.value = true
+      })
+    }
+  provide('reload', onRefresh)
 </script>
 
 <style>

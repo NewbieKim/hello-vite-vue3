@@ -34,8 +34,6 @@
     return `color:${themeObj[prop.theme]};`
   })
   const fontWidth = computed(()=> {
-    console.log(width.value);
-    debugger
     return `width:${width.value}em;`
   })
   const mouseOut = () => {

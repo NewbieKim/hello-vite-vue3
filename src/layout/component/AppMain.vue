@@ -9,9 +9,9 @@
           <!-- <keep-alive>
             <router-view :key="key" />
           </keep-alive> -->
-          <keep-alive>
-              <component :is="Component" :key="key" />
-            </keep-alive>
+          <keep-alive :include="cachedViews">
+            <component :is="Component" :key="key"></component>
+          </keep-alive>
         </transition>
       </section>
     </template>
@@ -21,16 +21,25 @@
 <script lang="ts">
 import { useRoute } from 'vue-router'
 import { computed, toRaw, unref } from 'vue';
+import { useTagsStore } from "@/store/modules/tags";
 export default {
   name: 'AppMain',
   setup() {
     const router = useRoute();
+    const useTags = useTagsStore();
     const key = computed(() => {
       // console.log('router', router)
       return router.path;
     })
+    const cachedViews = computed(() => {
+      return useTags.caCheViews
+    })
+    const openCache = computed(() => {
+      return
+    })
     return {
-      key
+      key,
+      cachedViews
     }
   }
 }

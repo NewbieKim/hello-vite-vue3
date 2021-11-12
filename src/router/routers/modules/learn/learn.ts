@@ -19,7 +19,7 @@ const learn: AppRouteModule = {
       component: () => import('@/view/learn/comProps/index.vue'),
       meta: {
         title: '组件传值',
-        keepAlive: true,
+        // keepAlive: true,
         icon: ''
       }
     },
@@ -29,8 +29,9 @@ const learn: AppRouteModule = {
       component: () => import('@/view/learn/list/index.vue'),
       meta: {
         title: '列表组件',
-        keepAlive: true,
-        icon: ''
+        // keepAlive: true,
+        icon: '',
+        // noCache: true
       }
     },
     {

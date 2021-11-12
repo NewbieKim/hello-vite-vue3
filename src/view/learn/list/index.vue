@@ -31,7 +31,13 @@
     </div>
   </div>
 </template>
-
+<script lang="ts">
+import {defineComponent} from 'vue'
+export default defineComponent({
+  name: 'List1',
+  setup() {}
+})
+</script>
 <script lang="ts" setup>
   import { ref, reactive, computed, watchEffect } from 'vue'
   import useStorage from '@/hooks/learn/useStorage'

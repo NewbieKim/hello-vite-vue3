@@ -34,25 +34,25 @@ export function useGo(_router?: Router) {
 
 export const useRedo = (_router?: Router) => {
   // 一个路由对象 包含：{ go, back, push, currentRoute }
-  const { push, currentRoute } = _router || useRouter();
   console.log('router', _router, useRouter());
-  console.log('value', push, currentRoute);
   // unref(): val = isRef(val) ? val.value : val
-  const { query, params = {}, name, fullPath } = currentRoute.value || currentRoute ;
+  const { query, params = {}, name, fullPath } = _router.currentRoute.value;
   function redo(): Promise<boolean> {
     return new Promise((resolve) => {
-      // if (name === 'REDIRECT_NAME') {
-      //   resolve(false);
-      //   return;
-      // }
-      // if (name && Object.keys(params).length > 0) {
-      //   params['_redirect_type'] = 'name';
-      //   params['path'] = String(name);
-      // } else {
-      //   params['_redirect_type'] = 'path';
-      //   params['path'] = fullPath;
-      // }
-      push({ name: name, params, query }).then(() => resolve(true));
+      if (name === 'REDIRECT_NAME') {
+        resolve(false);
+        return;
+      }
+      if (name && Object.keys(params).length > 0) {
+        params['_redirect_type'] = 'name';
+        params['path'] = String(name);
+      } else {
+        params['_redirect_type'] = 'path';
+        params['path'] = fullPath;
+      }
+      // _router.go(0) 网页转动
+      // _router.replace({ path: fullPath })
+      // _router.push({ name: 'Redirect', params, query }).then(() => resolve(true));
     });
   }
   return redo;

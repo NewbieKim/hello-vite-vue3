@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { useAttrs, ref, inject } from "vue";
 
   const emit = defineEmits(['myClick'])

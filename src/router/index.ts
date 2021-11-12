@@ -1,3 +1,11 @@
+// import { createWebHashHistory, createRouter } from "@/hooks/mockRouter/router";
+// const router = createRouter({
+//   history: createWebHashHistory(),
+//   routes: basicRoutes
+// })
+
+// export default router
+
 import { createRouter, createWebHashHistory  } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
 import type { App } from 'vue';
@@ -44,4 +52,4 @@ export function setupRouter(app: App<Element>) {
   app.use(router);
 }
 
-// export default router
+export default router

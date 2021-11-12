@@ -3,13 +3,24 @@
     <el-button type="primary" @click="definePropertyClick">defineProperty</el-button>
     <el-button type="primary" @click="objectReactive">objectReactive</el-button>
     <div>
-      <child></child>
+      <child :value="value" @toFlag="handleFlag"></child>
     </div>
+    <h1>watch监听对象</h1>
+    <div>
+      <el-input v-model="count"></el-input>
+      <span>{{ sexyDancer.name }}</span>
+      <el-button @click="observer">observer</el-button>
+    </div>
+     <h1>拷贝</h1>
+     <span>{{ form.name }}</span>
   </div>
 </template>
-
 <script lang="ts" setup>
+  import { ref, watch, reactive } from 'vue';
+  import { Base } from '@/utils/base'
   import child from './child/index.vue';
+
+  const base = new Base()
   const definePropertyClick = function(): void {
     let obj = {};
     let count = 1;
@@ -64,6 +75,53 @@
     console.log(count.value,double);
     count.value = 2;
     console.log(count.value,double);
+  };
+  // 监听ref 普通对象
+  let count = ref(0)
+  watch(count, (newVal: number, oldVal: number) => {
+    base.win.msg(`count值发生变化了，由${oldVal}变为了${newVal}`);
+  })
+  // 监听reactive对象
+  let sexyDancer = reactive({
+    name: 'hellodance-amo',
+    sort: 'house'
+  })
+  watch(() => sexyDancer.name, (newVal: string, oldVal: string) => {
+    base.win.msg(`sexyDancer值发生变化了，由${oldVal}变为了${newVal}`);
+  })
+  const observer = () => {
+    sexyDancer.name = 'boogie-frantic'
+  }
+
+  const shallowCopy = (obj: any) => {
+    if (typeof obj !== 'object') return
+    let newObj: any = obj instanceof Array ? [] : {}
+    for (let key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        newObj[key] = obj[key];
+      }
+    }
+    return reactive(newObj)
+  }
+  const deepCopy = (obj: any) => {
+    if (typeof obj !== 'object') return
+    let newObj: any = obj instanceof Array ? [] : {}
+    for (let key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        newObj[key] = typeof obj[key] === 'object' ? deepCopy(obj[key]) : obj[key];
+      }
+    }
+    return reactive(newObj)
+  }
+  // 拷贝
+  const form = reactive({
+    name: 'Lisa',
+    nz: '36D',
+    country: 'Russin'
+  })
+  const value = shallowCopy(form)
+  const handleFlag = () => {
+    console.log('flag-show', form, value)
   }
 </script>
 
