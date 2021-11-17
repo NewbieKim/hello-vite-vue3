@@ -27,7 +27,7 @@ const permissions: AppRouteModule = {
       path: 'front',
       name: 'Front',
       component: Layout,
-      redirect: '/permissions/front/btnPermission',
+      redirect: 'permissions/front/btnPermission',
       meta: {
         title: '前端权限',
         keepAlive: true,

@@ -22,6 +22,15 @@ const function1: AppRouteModule = {
         keepAlive: true
       }
     },
+    {
+      path: 'upload',
+      name: 'Upload',
+      component: () => import('@/view/function/upload/index.vue'),
+      meta: {
+        title: '文件上传',
+        keepAlive: true
+      }
+    },
   ]
 }
 export default function1;
