@@ -17,9 +17,16 @@ axios.interceptors.request.use(
   config => {
     let useStore = useUserStore()
     if (useStore.token) {
-      axios.defaults.headers.post['Authorization'] = `Bearer ` + useStore.token
+      config.headers['Authorization'] = `Bearer ` + useStore.token
       // token && (config.headers.Authorization  = token)
     }
+    // node后端默认接受的{}对象
+    // 上传formData格式
+    if (config.url === 'http://localhost:3000/thirdService/uploadSingle') {
+      debugger
+      config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
+    }
+    console.log(config, axios.defaults)
     return config
   },
   error => {
@@ -29,7 +36,8 @@ axios.interceptors.request.use(
 
 // axios.defaults.timeout = 10000
 // axios.defaults.headers.post['Authorization'] = 'Authorization'
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
+// 不经过请求拦截器 无效！
+// axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
 // 响应拦截器
 axios.interceptors.response.use(response => {

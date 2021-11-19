@@ -21,6 +21,24 @@ const component: AppRouteModule = {
         title: '组件图片',
         keepAlive: true
       }
+    },
+    {
+      path: 'echarts',
+      name: 'Echarts',
+      component: () => import('@/view/components/echarts/index.vue'),
+      meta: {
+        title: 'Echarts',
+        keepAlive: true
+      },
+    },
+    {
+      path: 'line',
+      name: 'Line',
+      component: () => import('@/view/components/echarts/line.vue'),
+      meta: {
+        title: 'EchartsLine',
+        keepAlive: true
+      }
     }
   ]
 }
