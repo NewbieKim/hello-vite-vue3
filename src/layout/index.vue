@@ -1,7 +1,7 @@
 <template>
   <div class="app-wrapper">
     <SliderBar class="sidebar-container" />
-    <div class="main-container">
+    <div class="main-container" id="mainContainer">
       <Navbar />
       <el-scrollbar
         class="main-scrollbar-wrapper"
@@ -10,6 +10,7 @@
         <AppMain />
       </el-scrollbar>
     </div>
+    <el-backtop />
   </div>
 </template>
 

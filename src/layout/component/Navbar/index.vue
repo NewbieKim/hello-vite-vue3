@@ -19,17 +19,44 @@
       <div class="right-menu">
         <span
             class="right-menu-item"
+            title="全屏"
+            @click="toggle"
+        >
+          <svg-icon :name="'fullScree'" />
+        </span>
+        <span
+            class="right-menu-item"
             title="刷新"
             @click="reFreshPage"
         >
-          <i class="el-icon-refresh-right"></i>
+          <svg-icon :name="'reset'" />
+        </span>
+        <span
+            class="right-menu-item"
+            title="语言"
+        >
+          <svg-icon :name="'lan'" />
+        </span>
+        <span
+            class="right-menu-item"
+            title="用户头像"
+            @click="openSysOpt"
+        >
+          <svg-icon :name="'user'" />
+        </span>
+        <span
+            class="right-menu-item"
+            title="系统配置"
+            @click="openSysOpt"
+        >
+          <svg-icon :name="'xiugai'" />
         </span>
         <span
             class="right-menu-item"
             title="退出登录"
             @click="loginOutTab"
         >
-          <i class="el-icon-s-promotion"></i>
+          <svg-icon :name="'loginOut'" />
         </span>
       </div>
     </div>
@@ -44,6 +71,10 @@
   import { useUserStore } from '@/store/modules/user';
   import { useTagsStore } from '@/store/modules/tags'
   import { useMenusStore } from '@/store/modules/menus'
+
+  import { useFullscreen } from '@vueuse/core';
+  import { defineProps, defineEmits } from "vue";
+  const { isFullscreen, enter, exit, toggle } = useFullscreen();
 
   const router = useRouter()
   const useApp = useAppStore();

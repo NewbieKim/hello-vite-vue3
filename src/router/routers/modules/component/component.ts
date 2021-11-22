@@ -39,6 +39,33 @@ const component: AppRouteModule = {
         title: 'EchartsLine',
         keepAlive: true
       }
+    },
+    {
+      path: 'map',
+      name: 'Map',
+      component: () => import('@/view/components/map/BaiduMap.vue'),
+      meta: {
+        title: 'BaiduMap',
+        keepAlive: true
+      }
+    },
+    {
+      path: 'editor',
+      name: 'Editor',
+      component: () => import('@/view/components/editor/index.vue'),
+      meta: {
+        title: '富文本编辑器',
+        keepAlive: true
+      }
+    },
+    {
+      path: 'loading',
+      name: 'Loading',
+      component: () => import('@/view/components/loading/index.vue'),
+      meta: {
+        title: '全屏加载',
+        keepAlive: true
+      }
     }
   ]
 }

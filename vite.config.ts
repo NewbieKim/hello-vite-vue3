@@ -2,6 +2,7 @@ import { defineConfig, resolveConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import visualizer from "rollup-plugin-analyzer";
 import path from 'path'
+import { createSvg } from './src/svg/index.ts'
 
 // const resolve = (dir: string) => path.resolve(__dirname, dir);
 // https://vitejs.dev/config/
@@ -21,6 +22,7 @@ if (1) {
 export default defineConfig({
   plugins: [
     vue(),
+    createSvg('./src/svg/svg/'),
     ...plugins
   ],
   // 修改配置

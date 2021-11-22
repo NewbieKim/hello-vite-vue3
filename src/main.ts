@@ -4,11 +4,14 @@ import { router, setupRouter } from './router';
 import { setupStore } from './store';
 import ElementPlus from 'element-plus';
 import 'element-plus/theme-chalk/index.css';
+// import SvgIcon from 'vue-svgicon' // vue3版本语法报错
+import svgIcon from '@/svg/index.vue'
 import '@/permission';
 // base组件
 import { Base } from './utils/base';
 // 样式文件
 import "@/style/base.scss";
+
 
 // 对vue进行类型补充说明
 declare module '@vue/runtime-core' {
@@ -32,6 +35,7 @@ async function initApp() {
   app.use(ElementPlus);
   app.config.devtools = true;
   app.mount('#app');
+  app.component('svg-icon', svgIcon)
   app.config.globalProperties.Base = new Base();
 }
 initApp()

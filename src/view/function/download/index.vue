@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="download-container">
     <div>
       <h1>根据文件名称下载</h1>
       <el-button type="primary" @click="downloadByName">文件名下载</el-button>
@@ -139,6 +139,9 @@
 </script>
 
 <style lang="scss" scoped>
+.download-container {
+  height: 1000px;
+}
 .merge {
   img {
     width: 150px;
