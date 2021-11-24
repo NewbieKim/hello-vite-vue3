@@ -6,8 +6,8 @@
 
   import { useScript } from '@/hooks/web/useScript';
 
-  const BAI_DU_MAP_URL =
-    'https://api.map.baidu.com/getscript?v=3.0&ak=OaBvYmKX3pjF7YFUFeeBCeGdy9Zp7xB2&services=&t=20210201100830&s=1';
+  // const BAI_DU_MAP_URL ='https://api.map.baidu.com/getscript?v=3.0&ak=OaBvYmKX3pjF7YFUFeeBCeGdy9Zp7xB2&services=&t=20210201100830&s=1';
+  const BAI_DU_MAP_URL ='https://api.map.baidu.com/getscript?v=3.0&ak=2BLZD87Az4vmUuVrRER8L1Lh8WhLMkeI';
   export default defineComponent({
     name: 'BaiduMap',
     props: {
@@ -29,7 +29,17 @@
         await nextTick();
         const wrapEl = unref(wrapRef);
         if (!wrapEl) return;
+        // 根据定位获取地址
+        navigator.geolocation.getCurrentPosition((position: any) => {
+          const latitude = position.coords.latitude
+          const longitude = position.coords.longitude
+          console.log('position1', latitude, longitude)
+        })
         const BMap = (window as any).BMap;
+        const geolocation = new BMap.Geolocation();
+        geolocation.getCurrentPosition(function(position: any) {
+          console.log('position2', position)
+        })
         const map = new BMap.Map(wrapEl); // 地图实例对象
         const point = new BMap.Point(116.404, 39.915); // 坐标点对象
         console.log('BMap', BMap)
