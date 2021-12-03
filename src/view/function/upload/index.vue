@@ -30,6 +30,7 @@
   import { upload } from "@/hooks/core/upload";
   import fileUpload from "@/components/fileUpload/index.vue";
   import { fileDataJsonTransArray } from "@/utils/fileTool";
+  import axios from 'axios'
   // import Heading from "@/components/Heading.jsx";
   // 展示图片
   let fileList = [
@@ -60,8 +61,17 @@
     formData.set(fieldName, file)
     console.log('formData', formData, formData.get('file'))
     // let data = { file: file, name: file.name }
-    uploadBySingle(formData).then((res: any) => {
-      console.log('upload-res', res)
+    // uploadBySingle(formData).then((res: any) => {
+    //   console.log('upload-res', res)
+    // })
+    axios({
+      url: 'http://localhost:3000/thirdService/upload',
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      // 发送的数据
+      data: formData
     })
   }
   onMounted(() => {

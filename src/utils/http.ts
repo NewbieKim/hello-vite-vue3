@@ -23,9 +23,9 @@ axios.interceptors.request.use(
     // node后端默认接受的{}对象
     // 上传formData格式
     if (config.url === 'http://localhost:3000/thirdService/uploadSingle') {
-      debugger
       config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
     }
+    config.headers['']
     console.log(config, axios.defaults)
     return config
   },

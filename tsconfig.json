@@ -1,15 +1,26 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "useDefineForClassFields": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
-    "jsx": "preserve",
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
+    // "target": "esnext",
+    // "module": "esnext",
+    // "moduleResolution": "node",
+    // "strict": false,
+    // "forceConsistentCasingInFileNames": true,
+    // "allowSyntheticDefaultImports": true,
+    // "strictFunctionTypes": false,
+    // "jsx": "preserve",
     "baseUrl": ".",
+    // "allowJs": true,
+    // "sourceMap": true,
+    // "esModuleInterop": true,
+    // "resolveJsonModule": true,
+    // "noUnusedLocals": true,
+    // "noUnusedParameters": true,
+    // "experimentalDecorators": true,
+    // "types": ["vite/client"],
+    // "typeRoots": ["./node_modules/@types/", "./types"],
+    // "noImplicitAny": false,
+    "skipLibCheck": true, // 跳过第三方包类型检查
+    "isolatedModules": true, // 哪些功能无法与独立编译模式一同工作
     "paths": {
       "@/*": [
         "src/*"
@@ -21,10 +32,8 @@
       "dom.iterable",
       "scripthost"
     ],
-    "types": ["node"],
-    // "typeRoots": ["../node_modules/types"]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/router/menus"],
+  // "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/router/menus"],
   "exclude": [
     "node_modules"
   ]

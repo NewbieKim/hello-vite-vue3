@@ -36,7 +36,7 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
   import { ref, defineProps, watch, onMounted } from 'vue';
   import { QuillEditor } from '@vueup/vue-quill'
   import '@vueup/vue-quill/dist/vue-quill.snow.css';
@@ -112,7 +112,7 @@
   })
 
   // 点击图片ICON触发事件
-  function imgHandler(state: any) {
+  const imgHandler = function(state: any) {
     const myQuillEditor = ref<any | null>({});
     let addRange = myQuillEditor.quill.getSelection()
     if (state) {
@@ -122,7 +122,7 @@
     uploadType = 'image'
   }
 
-  function onEditorChange() {
+  const onEditorChange: Function = function() {
     debugger
   }
 

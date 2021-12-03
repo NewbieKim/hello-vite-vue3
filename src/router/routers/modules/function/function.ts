@@ -31,6 +31,15 @@ const function1: AppRouteModule = {
         keepAlive: true
       }
     },
+    {
+      path: 'net',
+      name: 'Net',
+      component: () => import('@/view/function/net/index.vue'),
+      meta: {
+        title: '前端网络',
+        keepAlive: true
+      }
+    },
   ]
 }
 export default function1;
