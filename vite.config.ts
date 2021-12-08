@@ -33,7 +33,7 @@ export default defineConfig({
   },
   base: './',
   server: {
-    port: 4000,
+    port: 5000,
     open: true,
     cors: true // 允许跨域
   },

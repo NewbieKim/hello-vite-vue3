@@ -40,6 +40,15 @@ const function1: AppRouteModule = {
         keepAlive: true
       }
     },
+    {
+      path: 'frontAsync',
+      name: 'FrontAsync',
+      component: () => import('@/view/function/frontAsync/index.vue'),
+      meta: {
+        title: '前端异步',
+        keepAlive: true
+      }
+    },
   ]
 }
 export default function1;

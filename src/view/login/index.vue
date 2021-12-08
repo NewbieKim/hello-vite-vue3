@@ -66,7 +66,7 @@
             base.win.msg('登录成功', 'success')
             // this.$router.go(0)
             router.push({
-              path: '/'
+              path: '/dashboad/workbench'
             })
           } else {
             console.log('登录失败')
