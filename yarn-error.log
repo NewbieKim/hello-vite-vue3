@@ -1,5 +1,5 @@
 Arguments: 
-  D:\Program Files\nodejs\node.exe D:\Program Files\nodejs\node_global\node_modules\yarn\bin\yarn.js add jsonp --save
+  D:\Program Files\nodejs\node.exe D:\Program Files\nodejs\node_global\node_modules\yarn\bin\yarn.js add three --dev-save
 
 PATH: 
   C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;D:\Program Files\Git\cmd;D:\Program Files\TortoiseGit\bin;D:\app\Python36;D:\Program Files\TortoiseSVN\bin;D:\Program Files\MongoDB\Server\4.2\bin;D:\Program Files\Maven\apache-maven-3.6.3\bin;D:\Program Files\Java\apache-tomcat-9.0.41\bin;C:\Program Files\Java\jdk1.8.0_211\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\Program Files\nodejs\;C:\Users\JZYQ\AppData\Local\Microsoft\WindowsApps;D:\Program Files\nodejs\node_global;

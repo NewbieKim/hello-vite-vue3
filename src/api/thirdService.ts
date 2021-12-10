@@ -1,5 +1,5 @@
 import { httpPost } from '@/utils/http'
-const LOCALURL = 'http://localhost:3000/'
+const LOCALURL = 'http://120.79.113.248:3000/'
 export const thirdServiceApi = {
   download: LOCALURL + 'thirdService/download',
   uploadBySingle: LOCALURL + 'thirdService/uploadSingle'

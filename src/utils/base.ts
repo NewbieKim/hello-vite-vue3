@@ -109,7 +109,7 @@ const handleNotTraverse = (target, tag) => {
   let ctor = target.constructor;
   switch(tag) {
     case '[object RegExp]':
-      return handleRegExp(target);
+      return new ctor(target);
     default:
       return new ctor(target)
   }

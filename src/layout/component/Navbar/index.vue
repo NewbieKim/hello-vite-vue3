@@ -138,6 +138,11 @@
   // 是否全显左侧菜单栏
   const triggleSilerBar = () => {
     useApp.TRIGGER_BAR(false)
+    // if (sliderBar.opened === 'opened') {
+    //   useApp.TRIGGER_BAR(false)
+    // } else {
+    //   useApp.TRIGGER_BAR(true)
+    // }
   }
   // 退登
   const loginOutTab = async () => {

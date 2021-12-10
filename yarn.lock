@@ -162,6 +162,11 @@
   resolved "http://10.200.0.5:8081/repository/npm-group/@types/file-saver/-/file-saver-2.0.3.tgz#b734c4f5a04d20615eaed3dc106e2ab321082009"
   integrity sha1-tzTE9aBNIGFertPcEG4qsyEIIAk=
 
+"@types/node@^16.11.10":
+  version "16.11.12"
+  resolved "http://10.200.0.5:8081/repository/npm-group/@types/node/-/node-16.11.12.tgz#ac7fb693ac587ee182c3780c26eb65546a1a3c10"
+  integrity sha512-+2Iggwg7PxoO5Kyhvsq9VarmPbIelXP070HMImEpbtGCoyWNINQj4wzjbQCXzdHTRXnqufutJb5KAURZANNBAw==
+
 "@types/nprogress@^0.2.0":
   version "0.2.0"
   resolved "https://registry.nlark.com/@types/nprogress/download/@types/nprogress-0.2.0.tgz#86c593682d4199212a0509cc3c4d562bbbd6e45f"
@@ -2379,7 +2384,12 @@ lodash.merge@^4.6.2:
   resolved "https://registry.npm.taobao.org/lodash.merge/download/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
   integrity sha1-VYqlO0O2YeGSWgr9+japoQhf5Xo=
 
-lodash@^4.17.21, lodash@^4.17.4:
+lodash@^4.17.21:
+  version "4.17.21"
+  resolved "http://10.200.0.5:8081/repository/npm-group/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha1-Z5WRxWTDv/quhFTPCz3zcMPWkRw=
+
+lodash@^4.17.4:
   version "4.17.21"
   resolved "https://registry.nlark.com/lodash/download/lodash-4.17.21.tgz?cache=0&sync_timestamp=1624543041613&other_urls=https%3A%2F%2Fregistry.nlark.com%2Flodash%2Fdownload%2Flodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha1-Z5WRxWTDv/quhFTPCz3zcMPWkRw=
@@ -3661,6 +3671,11 @@ text-table@^0.2.0:
   version "0.2.0"
   resolved "https://registry.nlark.com/text-table/download/text-table-0.2.0.tgz?cache=0&sync_timestamp=1618847142316&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ftext-table%2Fdownload%2Ftext-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
+
+three@^0.135.0:
+  version "0.135.0"
+  resolved "http://10.200.0.5:8081/repository/npm-group/three/-/three-0.135.0.tgz#cff4ec8edd3c51ce9bc7e88d13e8eafed4d0ddfc"
+  integrity sha512-kuEpuuxRzLv0MDsXai9huCxOSQPZ4vje6y0gn80SRmQvgz6/+rI0NAvCRAw56zYaWKMGMfqKWsxF9Qa2Z9xymQ==
 
 to-fast-properties@^2.0.0:
   version "2.0.0"

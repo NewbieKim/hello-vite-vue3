@@ -1,6 +1,7 @@
 import { httpPost } from '@/utils/http'
 
-const LOCALURL = 'http://localhost:3000/'
+// const LOCALURL = 'http://localhost:3000/'
+const LOCALURL = 'http://120.79.113.248:3000/'
 export const userApi = {
   login: LOCALURL + 'users/login',
   loginOut: LOCALURL + 'users/loginOut',

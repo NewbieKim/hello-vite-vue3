@@ -22,7 +22,7 @@ export const InitRoute: AppRouteRecordRaw = {
 export const LoginRoute: AppRouteRecordRaw = {
   path: '/login',
   name: 'Login',
-  component: () => import('../../view/login/index.vue'),
+  component: () => import('../../view/login/login1.vue'),
 };
 
 export const AboutRoute: AppRouteRecordRaw = {
