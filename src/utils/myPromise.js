@@ -50,8 +50,8 @@ class MyPromise {
   }
   // then 返回值穿透
   then(onFulfilled, onRejected) {
-    let p2 = new Promise(() => {})
-    p2 = new Promise((resolve, reject) => {
+    // let p2 = new Promise(() => {})
+    let p2 = new Promise((resolve, reject) => {
       if (this.status === FULFILLED) {
         // 成功后执行
         let x = onFulfilled(this.value)

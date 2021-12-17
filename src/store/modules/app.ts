@@ -11,7 +11,7 @@ export const useAppStore = defineStore({
   id: 'app',
   state: (): MenusState => ({
     sliderBar: {
-      opened: getSliderBarStatus(),
+      opened: getSliderBarStatus() === 'opened' ? true : false,
       withoutAnimation: false
     }
   }),

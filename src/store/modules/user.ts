@@ -7,6 +7,7 @@ import { userApi, login } from '../../api/user'
 import { Md5 } from 'ts-md5';
 import { RoleEnum } from '../../enums/roleEnum';
 import { router } from '@/router';
+import { useTagsStore } from '@/store/modules/tags'
 // 引入cookies
 import { getToken, getUserId, getRoleId, setToken, setUserId, setRoleId, removeToken, removeUserId, removeRoleId } from '@/utils/cookies'
 interface IUserState {
@@ -95,12 +96,15 @@ export const useUserStore = defineStore({
       // if (this.token === '') {
       //   throw new Error("LoginOut：token is undefined");
       // }
+      const useTags = useTagsStore();
       await axios.post(userApi.loginOut);
-      removeRoleId('');
-      removeToken('');
-      removeUserId('');
+      removeRoleId();
+      removeToken();
+      removeUserId();
       sessionStorage.removeItem('userInfo')
       router.push({ path: '/login' })
+      // 清空页签
+      useTags.openTags = []
       // this.setToken('');
       // this.setUserId('');
       // this.setRoleId('');

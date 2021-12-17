@@ -22,7 +22,9 @@ export const useTagsStore = defineStore({
           return
         }
       }
-      this.openTags.push(data)
+      if (data.name !== 'Login') {
+        this.openTags.push(data)
+      }
     },
     deleteTags(tagName: any) {
       let index = 0

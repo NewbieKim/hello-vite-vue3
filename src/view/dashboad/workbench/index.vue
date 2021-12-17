@@ -22,19 +22,19 @@
             <div class="project" v-for="(item, index) in projectData" :key="index">
               <span class="project_name">
                 <!-- <svg-icon :name="'link'" /> -->
-                <img src="@/assets/vue-favicon.png" alt="">
+                <svg-icon class="svg-icon" :name="item.image" />
                 <span>{{ item.title }}</span>
               </span>
               <div class="project_introduce">{{ item.introduce }}</div>
               <div class="url_goto">
-                <span><a :href="item.yx_url">原型</a></span>
-                <span><a :href="item.test_url">测试环境</a></span>
-                <span><a :href="item.pro_url">正式环境</a></span>
+                <span><a :href="item.test_url">跳转项目地址</a></span>
               </div>
             </div>
           </div>
         </div>
-        <div class="right">右边</div>
+        <div class="right" style="display: flex;justify-content: center;align-items: center;">
+          <img src="@/svg/svg/illustration.svg" alt="">
+        </div>
     </div>
     <div class="sort-container">
       <div v-for="(item, index) in sortTable" :key="index">
@@ -49,7 +49,7 @@
               </span>
             </div>
               <div style="position: relative;">
-                <p>{{ item1.name }}</p>
+                <p style="display: flex">{{ item1.name }}</p>
                 <p>{{ item1.introduce }}</p>
             </div>
           </div>
@@ -64,8 +64,40 @@
   import { ref, reactive, computed } from 'vue'
   const projectData: Array<any> = reactive([
     {
+      title: 'Github',
+      image: 'github',
+      introduce: '众生皆具如来智慧德相',
+      yx_url: '',
+      test_url: 'https://github.com/NewbieKim/hello-vite-vue3/tree/master',
+      pro_url: ''
+    },
+    {
+      title: 'Vue',
+      image: 'vue',
+      introduce: '工欲善其事必先利其器',
+      yx_url: '',
+      test_url: 'https://v3.cn.vuejs.org/',
+      pro_url: ''
+    },
+    {
+      title: 'React',
+      image: 'react',
+      introduce: '重复 是为了更加坦荡地接受孤独',
+      yx_url: '',
+      test_url: 'https://react.docschina.org/docs/getting-started.html',
+      pro_url: ''
+    },
+    {
+      title: '智慧场馆',
+      image: 'gym',
+      introduce: '智慧场馆服务一体化',
+      yx_url: '',
+      test_url: 'http://sports.jinzhengtaoche.com:9097/shSports/index.html#/page/stadium/list',
+      pro_url: ''
+    },
+    {
       title: '元洪在线',
-      image: '',
+      image: 'food',
       introduce: '一站式全球食材供采平台',
       yx_url: '',
       test_url: '',
@@ -73,43 +105,11 @@
     },
     {
       title: '万匠大作',
-      image: '',
-      introduce: '开发单位：深圳金证引擎科技有限公司',
+      image: 'art',
+      introduce: '高端艺术品交易平台',
       yx_url: 'https://axhub.im/ax9/fe5194ab73124b00/#g=1&id=8239mx&p=%E7%89%88%E6%9C%AC%E4%BF%AE%E8%AE%A2%E8%AE%B0%E5%BD%95',
-      test_url: '',
+      test_url: 'https://console.wjdz.art/mallYun-operator/#/dashboard',
       pro_url: 'https://console.wjdz.art/mallYun-operator/#/dashboard'
-    },
-    {
-      title: '元洪在线',
-      image: '',
-      introduce: '',
-      yx_url: '',
-      test_url: '',
-      pro_url: ''
-    },
-    {
-      title: '元洪在线',
-      image: '',
-      introduce: '',
-      yx_url: '',
-      test_url: '',
-      pro_url: ''
-    },
-    {
-      title: '元洪在线',
-      image: '',
-      introduce: '',
-      yx_url: '',
-      test_url: '',
-      pro_url: ''
-    },
-    {
-      title: '元洪在线',
-      image: '',
-      introduce: '',
-      yx_url: '',
-      test_url: '',
-      pro_url: ''
     },
   ])
   const sortTable: Array<any> = reactive([
@@ -203,6 +203,10 @@
             font-size: 16px;
             align-items: center;
             // margin: 10px 0px;
+            .svg-icon {
+              width: 2rem;
+              height: 2rem;
+            }
             img {
               width: 40px;
               height: 40px;
@@ -247,7 +251,7 @@
         position: relative;
         background: #fff;
         margin: 10px;
-        border: 1px solid;
+        border: 1px solid #e3e5ea;
         left: -20px;
       }
       .s1:hover {

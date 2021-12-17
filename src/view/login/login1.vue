@@ -34,6 +34,11 @@
   import { useUserStore } from '@/store/modules/user';
   import { Base } from '../../utils/base';
   import { useRouter } from 'vue-router';
+  import sky_img from '@/assets/images/sky.png'
+  import earth_bg from '@/assets/images/earth_bg.png'
+  import cloud_img from '@/assets/images/cloud.png'
+  import starflake1 from '@/assets/images/starflake1.png'
+  import starflake2 from '@/assets/images/starflake2.png'
   export default defineComponent({
     setup() {
       // 容器
@@ -136,7 +141,7 @@
         )
         initRenderer()
         // 控制器必须放在renderer函数后面
-        initOrbitControls()
+        // initOrbitControls()
         animate()
       })
 
@@ -199,7 +204,7 @@
       }
       // 初始化背景（盒模型背景，视角在盒子里面，看到的是盒子内部）
       const initSceneBg = () => {
-        new THREE.TextureLoader().load('../src/assets/images/sky.png', (texture) => {
+        new THREE.TextureLoader().load(sky_img, (texture) => {
           const geometry = new THREE.BoxGeometry(width, height, depth) // 创建一个球形几何体 SphereGeometry
           const material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.BackSide }) // 创建基础为网格基础材料
           const mesh = new THREE.Mesh(geometry, material)
@@ -265,7 +270,7 @@
       const initSphereModal = () => {
         //材质
         let material = new THREE.MeshPhongMaterial()
-        material.map = new THREE.TextureLoader().load('../src/assets/images/earth_bg.png')
+        material.map = new THREE.TextureLoader().load(earth_bg)
         material.blendDstAlpha = 1
         //几何体
         sphereGeometry = new THREE.SphereGeometry(50, 64, 32)
@@ -310,7 +315,7 @@
         scene.add(tube)
         const clondGeometry = new THREE.PlaneGeometry(geometryWidth, geometryHeigh)
         const textureLoader = new THREE.TextureLoader()
-        const cloudTexture = textureLoader.load('../src/assets/images/cloud.png')
+        const cloudTexture = textureLoader.load(cloud_img)
         const clondMaterial = new THREE.MeshBasicMaterial({
           map: cloudTexture,
           blending: THREE.AdditiveBlending,
@@ -331,8 +336,8 @@
         const vertices: number[] = []
         const pointsGeometry: any[] = []
         const textureLoader = new THREE.TextureLoader()
-        const sprite1 = textureLoader.load('../src/assets/images/starflake1.png')
-        const sprite2 = textureLoader.load('../src/assets/images/starflake2.png')
+        const sprite1 = textureLoader.load(starflake1)
+        const sprite2 = textureLoader.load(starflake2)
         parameters = [
           [[0.6, 100, 0.75], sprite1, 50],
           [[0, 0, 1], sprite2, 20]

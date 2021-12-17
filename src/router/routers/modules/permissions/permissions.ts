@@ -10,7 +10,7 @@ const permissions: AppRouteModule = {
   meta: {
     orderNo: 100,
     title: '权限管理',
-    icon: 'el-icon-menu'
+    icon: 'el-icon-warning'
   },
   children: [
     {

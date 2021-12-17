@@ -61,6 +61,12 @@
     color: #fff;
   }
 }
+.sidebar-container {
+  .horizontal-collapse-transition {
+    transition: 0s width ease-in-out, 0s padding-left ease-in-out,
+      0s padding-right ease-in-out;
+  }
+}
 .sliderBar-container {
   width: 160px;
   float: left;

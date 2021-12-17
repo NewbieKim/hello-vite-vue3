@@ -9,8 +9,8 @@ const ts: AppRouteModule = {
   redirect: '/ts/generic',
   meta: {
     orderNo: 1000,
-    title: 'TS框框',
-    icon: 'el-icon-setting'
+    title: 'TS学习',
+    icon: 'el-icon-s-opportunity'
   },
   children: [
     {

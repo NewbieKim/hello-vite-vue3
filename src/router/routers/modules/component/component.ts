@@ -9,8 +9,8 @@ const component: AppRouteModule = {
   redirect: '/component/rolesManage',
   meta: {
     orderNo: 1000,
-    title: '组件',
-    icon: 'el-icon-coin'
+    title: '自定义组件',
+    icon: 'el-icon-document-add'
   },
   children: [
     {
