@@ -20,13 +20,15 @@ interface IUserState {
 
 export const useUserStore = defineStore({
   id: 'app-user',
-  state: (): IUserState => ({
-    userInfo: 'kkk',
-    userId: getUserId() || '',
-    token: getToken() || '',
-    roleId: getRoleId() || '',
-    roleList: []
-  }),
+  state: (): IUserState => (
+    {
+      userInfo: 'kkk',
+      userId: getUserId() || '',
+      token: getToken() || '',
+      roleId: getRoleId() || '',
+      roleList: []
+    }
+  ),
   getters: {
     SetToken(token: string) {
       this.token = token;
@@ -39,6 +41,9 @@ export const useUserStore = defineStore({
     },
     getRoleList(): RoleEnum[] {
       return this.roleList.length > 0 ? this.roleList : [];
+    },
+    getWatchData() {
+      return '监听属性'
     }
   },
   actions: {

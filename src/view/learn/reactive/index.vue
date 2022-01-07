@@ -1,128 +1,138 @@
 <template>
   <div>
-    <el-button type="primary" @click="definePropertyClick">defineProperty</el-button>
-    <el-button type="primary" @click="objectReactive">objectReactive</el-button>
-    <div>
-      <child :value="value" @toFlag="handleFlag"></child>
-    </div>
-    <h1>watch监听对象</h1>
-    <div>
-      <el-input v-model="count"></el-input>
-      <span>{{ sexyDancer.name }}</span>
-      <el-button @click="observer">observer</el-button>
-    </div>
-     <h1>拷贝</h1>
-     <span>{{ form.name }}</span>
+    <h6>ref</h6>
+    <el-button type="primary" @click="handleRef">响应Ref</el-button>
   </div>
+  <el-row type="flex" justify="center">
+    <el-col :span="6">
+      <div>
+        <h6>reactive</h6>
+        <el-button type="primary" @click="handleReactive">响应Reactive</el-button>
+        <ul>
+          <li v-for="(item, index) in reactiveVal" :key="index">
+            {{ item.name }}-{{ item.song }}
+          </li>
+        </ul>
+      </div>
+    </el-col>
+  </el-row>
+  <el-row type="flex" justify="center">
+    <el-col :span="6">
+      <div>
+        <h6>数组</h6>
+        <el-button type="primary" @click="handleTo">响应数组</el-button>
+        <p>{{ age }}-{{ name }}</p>
+        <p>{{ stateAsRefs.age }}-{{ stateAsRefs.name }}</p>
+        <ul>
+          <li v-for="(item, index) in filesRef" :key="index">
+            {{ item.name }}
+          </li>
+        </ul>
+      </div>
+    </el-col>
+  </el-row>
+  <el-row type="flex" justify="center">
+    <el-col :span="12">
+      <div>
+        <h6>--------vue3的监听-------</h6>
+        <el-button type="primary" @click="handleWatch" >watch监听</el-button>
+        <el-button @click="obj.a = 2">深度监听对象</el-button>
+        <el-button @click="">计算属性</el-button>
+      </div>
+    </el-col>
+  </el-row>
+  <el-row type="flex" justify="center">
+    <el-col :span="12">
+      <div>
+        <h6>--------nexTick-------</h6>
+        <div ref="msgDiv">{{ msg }}</div>
+        <div v-if="msg1">Message got outside $nextTick: {{msg1}}</div>
+        <div v-if="msg2">Message got inside $nextTick: {{msg2}}</div>
+        <div v-if="msg3">Message got outside $nextTick: {{msg3}}</div>
+        <el-button type="primary" @click="handleNexTick" >handleNexTick</el-button>
+      </div>
+    </el-col>
+  </el-row>
 </template>
 <script lang="ts" setup>
-  import { ref, watch, reactive } from 'vue';
+  import { ref, watch, watchEffect, reactive, toRefs, isRef, computed, nextTick} from 'vue';
   import { Base } from '@/utils/base'
-  import child from './child/index.vue';
 
   const base = new Base()
-  const definePropertyClick = function(): void {
-    let obj = {};
-    let count = 1;
-    // let getDouble = (n: number) => { return n * 2 };
-    // let double = getDouble(count)
-    // Object.defineProperty(obj, 'count', {
-    //   get() {
-    //     return count;
-    //   },
-    //   set(val) {
-    //     count = val;
-    //     double = getDouble(val);
-    //   }
-    // })
-    let proxy = new Proxy(obj, {
-      get: function(target, prop) {
-        return target[prop];
-      },
-      set: function(target, prop, value) {
-        target[prop] = value;
-        if (prop === 'count') {
-          double = value * 2;
-        }
-      },
-      deleteProperty(target, prop) {
-        delete target[prop];
-        if (prop === 'count') {
-          duuble = NaN
-        }
-      }
-    })
-    console.log(obj.count);
-    obj.count = 2;
-    console.log(obj.count);
-    // console.log(double) // 打印2
-    // obj.count = 2
-    // delete obj.count
-    // console.log(double) // 打印4 有种自动变化的感觉
-  };
-  const objectReactive = function(): void {
-    let _value = 1;
-    let double = 0;
-    let count = {
-      get value() {
-        return _value;
-      },
-      set value(value) {
-        _value = value;
-        double = _value * 2;
-      }
-    }
-    console.log(count.value,double);
-    count.value = 2;
-    console.log(count.value,double);
-  };
-  // 监听ref 普通对象
-  let count = ref(0)
-  watch(count, (newVal: number, oldVal: number) => {
-    base.win.msg(`count值发生变化了，由${oldVal}变为了${newVal}`);
+  // 实验性语法
+  // const refVal = $(ref('')) // 还原 $$(refVal)
+  // $(defineProps({ isLoading: Boolean }))
+  const refVal = ref('')
+  const reactiveVal = reactive([{ name: 'jay', song: 'By Father Name' }])
+  let filesRef = []
+
+  // toRefs 将响应式对象变成普通对象
+  const state = reactive({
+    age: 1111,
+    name: 'xtz'
   })
-  // 监听reactive对象
-  let sexyDancer = reactive({
-    name: 'hellodance-amo',
-    sort: 'house'
-  })
-  watch(() => sexyDancer.name, (newVal: string, oldVal: string) => {
-    base.win.msg(`sexyDancer值发生变化了，由${oldVal}变为了${newVal}`);
-  })
-  const observer = () => {
-    sexyDancer.name = 'boogie-frantic'
+  const stateAsRefs = toRefs(state)
+
+  let { age, name } = state
+
+  function handleRef () {
+    console.log(refVal, refVal.value)
+  }
+  function handleReactive () {
+    console.log(reactiveVal)
+    let { song } = toRefs(reactiveVal[0])
+    song.value = "Feng"
+  }
+  function handleTo () {
+    filesRef = reactive([{ name: '123' }]) as any
+    // toRefs 将响应式对象变成普通对象
+    setTimeout(() => {
+      stateAsRefs.age.value = 111000,
+      stateAsRefs.name.value = 'xieh'
+    }, 2000)
+    console.log(filesRef)
+    console.log(isRef(ref('')), isRef(toRefs(reactive({}))), isRef(stateAsRefs), stateAsRefs)
   }
 
-  const shallowCopy = (obj: any) => {
-    if (typeof obj !== 'object') return
-    let newObj: any = obj instanceof Array ? [] : {}
-    for (let key in obj) {
-      if (obj.hasOwnProperty(key)) {
-        newObj[key] = obj[key];
-      }
-    }
-    return reactive(newObj)
-  }
-  const deepCopy = (obj: any) => {
-    if (typeof obj !== 'object') return
-    let newObj: any = obj instanceof Array ? [] : {}
-    for (let key in obj) {
-      if (obj.hasOwnProperty(key)) {
-        newObj[key] = typeof obj[key] === 'object' ? deepCopy(obj[key]) : obj[key];
-      }
-    }
-    return reactive(newObj)
-  }
-  // 拷贝
-  const form = reactive({
-    name: 'Lisa',
-    nz: '36D',
-    country: 'Russin'
+  // watch监听属性
+  let count = ref(0)
+  watch((count), (newVal, oldVal) => { // 参数才会被监听
+    console.log('属性被watch监听', newVal, oldVal)
   })
-  const value = shallowCopy(form)
-  const handleFlag = () => {
-    console.log('flag-show', form, value)
+  watchEffect(() => {
+    // count.value++ // 回调内部参数就会被监听
+    console.log('属性被watchEffect监听，初始化会被监听一次', count)
+  })
+  function handleWatch() {
+    count.value++
   }
+  // 深度监听
+  const obj = reactive({a: 1})
+  watch((obj), (obj) => {
+    console.log('对象obj被watch监听', obj)
+  })
+  watchEffect(() => {
+    console.log('对象obj被watchEffect监听', obj)
+  })
+  let computed1 = computed(() => {
+    return computed1
+  })
+
+  // nexTick
+  const msg = ref('Hello Vue.')
+  const msg1 = ref('')
+  const msg2 = ref('')
+  const msg3 = ref('')
+  const msgDiv = ref(null)
+  function handleNexTick () {
+    msg.value = "Hello girls"
+    msg1.value = msgDiv.value.innerHTML;
+    nextTick(() => {
+      msg2.value = msgDiv.value.innerHTML
+    })
+    msg3.value = msgDiv.value.innerHTML
+  }
+
 </script>
 
 <style lang="scss" scoped>

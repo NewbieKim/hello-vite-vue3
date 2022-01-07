@@ -34,6 +34,7 @@ export function dataUrlToBlob(base64, mimeType) {
 // showSaveFilePicker API下载
 export async function saveFile(blob: any, filename: string) {
   try {
+    // 调用window.showSaveFilePicker方法来读取目录
     const handle = await window.showSaveFilePicker({
       suggestedName: filename,
       types: [

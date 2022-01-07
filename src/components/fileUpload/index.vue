@@ -36,7 +36,7 @@ date: 2021-03-11
 </template>
 
 <script lang="ts" setup>
-  import { ref, computed, defineProps, defineEmits, onMounted } from "vue";
+  import { ref, computed, defineProps, defineEmits, onMounted, reactive } from "vue";
   import uploadFile from "@/utils/fileUploadService";
   import { fileDataArrayTransformJson } from "@/utils/fileTool";
   import { Base } from "@/utils/base";
@@ -55,7 +55,7 @@ date: 2021-03-11
       }
     }
   })
-  let fileList: Array<any> = []
+  let fileList = reactive(props.viewList)
   // 读取上传配置
   const maxLength: number = props.uploadConfig.maxLength
   const maxSizeNum: number = props.uploadConfig.maxSize
@@ -69,7 +69,8 @@ date: 2021-03-11
   let imageArray = ['jpeg','gif','jpg','png','bmp']
 
   onMounted(() => {
-    fileList = props.viewList as []
+    // fileList = props.viewList as []
+    console.log('file', fileList)
   })
   // 点击已上传文件触发的钩子函数
   function handlePreView (file: any) {

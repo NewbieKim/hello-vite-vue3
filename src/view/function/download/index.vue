@@ -2,9 +2,9 @@
   <div class="download-container">
     <div>
       <h1>根据文件名称下载</h1>
-      <el-button type="primary" @click="downloadByName">文件名下载</el-button>
-      <el-button type="primary"><a href="http://localhost:4000/src/assets/logo.png" download>图片点击下载</a></el-button>
-      <el-button type="primary"><a href="http://localhost:4000/src/assets/test.txt" download>文本点击下载</a></el-button>
+      <el-button type="primary" @click="downloadByName">三方插件下载</el-button>
+      <el-button type="primary"><a href="http://localhost:5000/src/assets/logo.png" download>远程下载</a></el-button>
+      <el-button type="primary"><a href="http://localhost:5000/src/assets/test.txt" download>本地下载</a></el-button>
     </div>
     <div>
       <h1>根据后端接口下载</h1>
@@ -32,6 +32,7 @@
       <h1>zip下载</h1>
       <div>
         <el-button type="primary" @click="downloadByZip">zip下载</el-button>
+        <el-button type="primary" @click="downloadByZip1">zip-url下载</el-button>
       </div>
     </div>
   </div>
@@ -46,8 +47,8 @@
   import JSZip from "jszip";
   import JSZipUtils from "jszip-utils";
   const downloadByName = () => {
-    let url = 'http://localhost:4000/src/assets/logo.png'
-    // saveAs(url, '测试文件.jpeg')
+    let url = 'http://120.79.113.248/public/images/截图.png'
+    saveAs(url, '截图.png')
   }
   const downloadByBack = async () => {
     const data: any = await download();
@@ -95,13 +96,16 @@
     const imgBlob = dataUrlToBlob(imgDataUrl, "image/png");
     console.log('imgBlob', imgBlob)
     saveFile(imgBlob, "bodymm.png");
-    console.log('123')
   }
+
+  // 第三方库
   const downloadByFileSave = () => {
     // let blob = new Blob(["大家好，我是阿chabao!"], { type: "text/plain;charset=utf-8" });
     // saveAs(blob, "hello.txt")
     saveAs("https://fuss10.elemecdn.com/1/8e/aeffeb4de74e2fde4bd74fc7b4486jpeg.jpeg", "image.jpg");
   }
+
+  // 压缩包下载
   const downloadByZip = () => {
     const imgs = ["/body.png", "/body2.png"]
     const images = ["/body.png", "/body2.png"].map(
@@ -134,6 +138,24 @@
         }
       })
     })
+  }
+  // 压缩包文件 直接url地址下载
+  const downloadByZip1 = () => {
+    let url = 'http://localhost:5000/src/assets/test.zip'
+    // 创建a标签
+    let ele = document.createElement("a")
+    ele.style.display = 'none'
+
+    // 设置href属性为文件路径，download属性可以设置文件名称
+    ele.href = url
+    ele.download = "测试.zip"
+
+    // 将a标签添加到页面并模拟点击
+    document.querySelectorAll("body")[0].appendChild(ele)
+    ele.click()
+
+    // 移除a标签
+    ele.remove()
   }
 
 </script>
