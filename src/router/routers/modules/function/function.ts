@@ -49,15 +49,15 @@ const function1: AppRouteModule = {
         keepAlive: true
       }
     },
-    {
-      path: 'frontAuth',
-      name: 'FrontAuth',
-      component: () => import('@/view/function/auth/index.vue'),
-      meta: {
-        title: '前端鉴权',
-        keepAlive: true
-      }
-    },
+    // {
+    //   path: 'frontAuth',
+    //   name: 'FrontAuth',
+    //   component: () => import('@/view/function/auth/index.vue'),
+    //   meta: {
+    //     title: '前端鉴权',
+    //     keepAlive: true
+    //   }
+    // },
   ]
 }
 export default function1;

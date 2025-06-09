@@ -22,15 +22,15 @@ const ts: AppRouteModule = {
         keepAlive: true
       }
     },
-    {
-      path: 'interface',
-      name: 'Interface',
-      component: () => import('@/view/tslearn/interface/index.vue'),
-      meta: {
-        title: '泛型接口',
-        keepAlive: true
-      }
-    }
+    // {
+    //   path: 'interface',
+    //   name: 'Interface',
+    //   component: () => import('@/view/tslearn/interface/index.vue'),
+    //   meta: {
+    //     title: '泛型接口',
+    //     keepAlive: true
+    //   }
+    // }
   ]
 }
 export default ts;

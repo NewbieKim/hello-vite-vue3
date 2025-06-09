@@ -1,8 +1,8 @@
 // 模块路由管理
 import type { AppRouteRecordRaw, AppRouteModule } from '../type';
 import Home from '../../view/home/index.vue'
-import Layout from '@/layout/index.vue'
-
+// import Layout from '@/layout/index.vue'
+import newHome from '@/view/updatePage/newHome/index.vue'
 const modules = import.meta.globEager('./modules/**/*.ts');
 
 export const routeModuleList: AppRouteModule[] = [];
@@ -15,8 +15,9 @@ Object.keys(modules).forEach((key) => {
 
 export const InitRoute: AppRouteRecordRaw = {
   path: '/',
-  name: 'Home',
-  component: Layout,
+  name: 'newHome',
+  // component: newHome,
+  component: () => import('../../view/login/login1.vue'),
 };
 
 export const LoginRoute: AppRouteRecordRaw = {
@@ -35,6 +36,21 @@ export const AboutRoute: AppRouteRecordRaw = {
   }
 }
 
-export const asyncRoutes = [InitRoute, LoginRoute,AboutRoute, ...routeModuleList];
+export const biChartsRoute: AppRouteRecordRaw = {
+  path: '/biCharts',
+  name: 'BiCharts',
+  component: () => import('@/view/biCharts/index.vue'),
+  meta: {
+    title: 'biCharts'
+  }
+}
+
+export const newHomeRoute: AppRouteRecordRaw = {
+  path: '/newHome',
+  name: 'NewHome',
+  component: () => import('@/view/updatePage/newHome/index.vue')
+}
+
+export const asyncRoutes = [InitRoute,LoginRoute,biChartsRoute,newHomeRoute, ...routeModuleList];
 
 export const basicRoutes = asyncRoutes;

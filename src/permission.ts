@@ -42,8 +42,9 @@ router.beforeEach(async(to: Router, _: Router, next: any) => {
       next()
     } else {
       // Other pages that do not have permission to access are redirected to the login page.
-      base.win.msg('暂无权限，请先登录', 'error')
-      next('/login')
+      // base.win.msg('暂无权限，请先登录', 'error')
+      // next('/login')
+      next()
     }
     NProgress.done()
   }

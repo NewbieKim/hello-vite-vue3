@@ -1,9 +1,10 @@
 <template>
   <div class="app-wrapper">
-    <SliderBar class="sidebar-container" />
+    <!-- <SliderBar class="sidebar-container" /> -->
     <div class="main-container" id="mainContainer">
-      <Navbar />
+      <topNav />
       <el-scrollbar
+        style="margin-top: 30px;"
         class="main-scrollbar-wrapper"
         wrap-class="main-scrollbar-wrapper"
       >
@@ -18,13 +19,15 @@
 import AppMain from './component/AppMain.vue'
 import SliderBar from './component/SliderBar/index.vue'
 import Navbar from "./component/Navbar/index.vue";
+import topNav from "./component/topNav/index.vue";
 import { reactive, ref, unref, defineComponent } from 'vue'
 export default defineComponent ({
   name: 'Layout',
-  components: {
+  components: { 
     AppMain,
     SliderBar,
-    Navbar
+    Navbar,
+    topNav
   },
   setup () {
 
@@ -42,7 +45,7 @@ export default defineComponent ({
 .main-container {
   height: 100%;
   transition: margin-left .28s;
-  margin-left: 205px;
+  // margin-left: 205px;
   position: relative;
   background: #f6f7f9;
   padding-top: 40px;

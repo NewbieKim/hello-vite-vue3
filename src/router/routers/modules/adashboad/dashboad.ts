@@ -1,6 +1,7 @@
 import type { AppRouteModule } from '../../../type'
 import component from '*.vue'
 import Layout from '@/layout/index.vue'
+// import newHome from '@/view/updatePage/newHome/index.vue'
 // roleManage路由
 const dashboad: AppRouteModule = {
   path: '/dashboad',

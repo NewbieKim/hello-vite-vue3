@@ -1,23 +1,23 @@
 <template>
   <div class="login-container">
     <div id="login-three-container"></div>
-    <div class="login-plane">
+    <div class="login-plane" @click="goWorkBench">
       <div class="login-plane-container">
          <img class="login-plane-human" src="@/assets/images/login_human.png" alt="" />
           <div class="login-plane-title">
-            欢迎你使用kimsweb
+            welcome to kimsweb
           </div>
-          <div class="login-plane-form">
-          <el-form :model="params" :rules="rules" ref="formRef">
-            <el-form-item prop="email">
-              <el-input placeholder="用户邮箱" type="text" v-model="params.email"></el-input>
-            </el-form-item>
-            <el-form-item prop="password">
-              <el-input placeholder="密码" type="password" v-model="params.password"></el-input>
-            </el-form-item>
-          </el-form>
-          <el-button type="primary" :loading="loadingFlag" style="width: 100%" @click="handleLogin">登录</el-button>
-        </div>
+          <!-- <div class="login-plane-form">
+            <el-form :model="params" :rules="rules" ref="formRef">
+              <el-form-item prop="email">
+                <el-input placeholder="用户邮箱" type="text" v-model="params.email"></el-input>
+              </el-form-item>
+              <el-form-item prop="password">
+                <el-input placeholder="密码" type="password" v-model="params.password"></el-input>
+              </el-form-item>
+            </el-form>
+            <el-button type="primary" :loading="loadingFlag" style="width: 100%" @click="handleLogin">登录</el-button>
+          </div> -->
       </div>
     </div>
     <div class="login-ground"></div>
@@ -457,6 +457,10 @@
         renderer.render(scene, camera)
       }
 
+      const goWorkBench = () => {
+        router.push({ path: '/dashboad/workBench' })
+    }
+
       // methods contianer
       async function handleLogin () {
         // let form = ref(null);
@@ -488,7 +492,8 @@
         params,
         rules,
         handleLogin,
-        formRef
+        formRef,
+        goWorkBench
       }
     }
   })
@@ -507,7 +512,8 @@
       position: absolute;
       z-index: 9999;
       width: 600px;
-      height: 500px;
+      height: 100px;
+      cursor: pointer;
       background-image: url('@/assets/images/login_border.png');
       background-repeat: no-repeat;
       background-size: 100% 100%;
